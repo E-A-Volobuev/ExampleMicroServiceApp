@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using FluentValidation;
+using Infrastructure.Masstransit;
 using Infrastructure.Repositories.Implementations;
 using Services.Abstractions;
 using Services.Contracts;
@@ -19,6 +20,7 @@ internal static class ServiceCollectionExtensions
                 .AddScoped<IEFGenericRepository<ApplicationForm>, EFGenericRepository<ApplicationForm>>()
                 .AddScoped<IEFGenericRepository<EventLogEntity>, EFGenericRepository<EventLogEntity>>()
                 .AddScoped<IValidator<ApplicationFormDto>, ApplicationFormValidator>()
+                .AddScoped<IMassTransitHelper, MassTransitHelper>()
                 .AddScoped<IEventLogService, EventLogService>();
 
         return services;
